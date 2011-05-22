@@ -5,13 +5,14 @@
 #include "queue/item.h"
 #include "queue/queue.h"
 
-link NEW(Vertex w, link next){
+link NEW(Vertex w, link next, double cst){
   link n;
 
   n = malloc(sizeof(struct node));
 
   n->w = w;
   n->next = next;
+  n->cst = cst;
 
   return n;
 }
@@ -33,14 +34,14 @@ Digraph DIGRAPHinit(int V){
   return G;
 }
 
-void DIGRAPHinsertA(Digraph G, Vertex v, Vertex w){
+void DIGRAPHinsertA(Digraph G, Vertex v, Vertex w, double cst){
   link n;
 
   if(v == w) return;
 
   for(n = G->adj[v]; n != NULL; n = n->next)
     if(n->w == w) return;
-  G->adj[v] = NEW(w, G->adj[v]);
+  G->adj[v] = NEW(w, G->adj[v], cst);
   G->A++;
 }
 
@@ -100,7 +101,7 @@ int DIGRAPHpath(Digraph G, Vertex s, Vertex t){
   else return 1;
 }
 
-void dijkstra(Digraph G, Vertex s, Vertex parnt[], double cst[]){
+void dijkstra(Digraph G, Vertex s){
   Vertex v, w; link p;
   for (v = 0; v < G->V; v++) {
     cst[v] = INFINITO;
@@ -127,5 +128,8 @@ void dijkstra(Digraph G, Vertex s, Vertex parnt[], double cst[]){
   }
 }
 
+double getCost(Digraph G, Vertex v, Vertex w){
+  link p;
 
-
+  while(p->
+}
