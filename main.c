@@ -23,5 +23,5 @@ int main( int argc, const char* argv[]){
     scanf("%d %d", &n, &m);    
   }
 
-  return 1;
+  return 0;
 }
