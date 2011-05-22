@@ -17,14 +17,11 @@ struct digraph{
 
 typedef struct digraph *Digraph;
 
-link NEW(Vertex w, link next);
+link NEW(Vertex w, link next, double cst);
 Digraph DIGRAPHinit(int V);
-void DIGRAPHinsertA(Digraph G, Vertex v, Vertex w);
+void DIGRAPHinsertA(Digraph G, Vertex v, Vertex w, double cst);
 void DIGRAPHremoveA(Digraph G, Vertex v, Vertex w);
 void DIGRAPHshow(Digraph G);
 int DIGRAPHpath(Digraph G, Vertex s, Vertex t);
 void dijkstra(Digraph G, Vertex s);
-
-static int lbl[maxV];
-static Vertex parnt[maxV];
-static double cst[maxV];
+double getCost(Digraph G, Vertex v, Vertex w);

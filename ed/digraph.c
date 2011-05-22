@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include "vertex.h"
 #include "digraph.h"
+#include "digraph_globals.h"
 #include "queue/item.h"
 #include "queue/queue.h"
 
@@ -51,7 +52,7 @@ void DIGRAPHremoveA(Digraph G, Vertex v, Vertex w){
   if(v==w) return;
 
   before = NULL;
-  for(actual = G->adj[v]; actual != NULL; acual = actual->next){
+  for(actual = G->adj[v]; actual != NULL; actual = actual->next){
     if(actual->w == w){
       before->next = actual->next;
       free(actual);
@@ -119,17 +120,25 @@ void dijkstra(Digraph G, Vertex s){
         parnt[w]=v;
         PQinsert(w);
       }else if(cst[w]>cst[v]+p->cst){
-        cst[w]=cst[v]+p->cst
+        cst[w]=cst[v]+p->cst;
         parnt[w] = v;
         PQdec(w);
       }
-
-      PQfree();
   }
+
+  PQfree();
 }
 
 double getCost(Digraph G, Vertex v, Vertex w){
   link p;
 
-  while(p->
+  p = G->adj[v];
+
+  while(p != NULL && p->w != w)
+    p = p->next;
+
+  if(p == NULL)
+    return -1;
+  else
+    return p->cst;
 }

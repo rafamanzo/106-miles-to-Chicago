@@ -3,4 +3,4 @@
 #define GRAPHinit DIGRAPHinit
 #define GRAPHshow DIGRAPHshow
 
-void GRAPHinsertE(Graph G, Vertex v, Vertex w);
+void GRAPHinsertE(Graph G, Vertex v, Vertex w, double cst);

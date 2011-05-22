@@ -1,4 +1,7 @@
 #include<stdlib.h>
+#include "../vertex.h"
+#include "../digraph.h"
+#include "../digraph_globals.h"
 #include "item.h"
 #include "queue.h"
 
